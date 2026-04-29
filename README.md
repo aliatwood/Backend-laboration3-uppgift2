@@ -21,7 +21,9 @@ All data valideras i JavaScript innan den skickas till API:et för att säkerst�
 ## API
 
 Webbplatsen kommunicerar med detta API:
-https://backend-laboration3-uppgift1-production.up.railway.app/api/workexperience
+https://backend-laboration3-uppgift1-production.up.railway.app/
+
+Installation och databas
 
 ## Tekniker
 
