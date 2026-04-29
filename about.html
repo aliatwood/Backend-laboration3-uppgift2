@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Info</title>
+  <title>Om projektet</title>
   <link rel="stylesheet" href="src/style.css">
   <link rel="icon" href="src/pictures/favicon.png" type="image/png">
 </head>
@@ -18,15 +18,35 @@
 
   <main>
     <div class="about">
-      <h1>Om webbplatsen</h1>
-      <p>Denna webbplats visar arbetserfarenheter hämtade från ett REST API byggt med Node.js, Express och MariaDB.</p>
-      <p>Du kan se alla erfarenheter på startsidan, lägga till nya via formuläret och ta bort befintliga poster.</p>
+      <h1>Om webbapplikationen</h1>
 
-      <h2>Databas</h2>
-      <p>Databasservern som används är MySQL/MariaDB, hostad på Railway.</p>
+      <p>
+        Denna webbplats är en frontend-applikation som använder ett REST API byggt med Node.js, Express och MongoDB.
+        Applikationen hanterar arbetserfarenheter och visar CRUD-funktionalitet (Create, Read, Update, Delete).
+      </p>
 
-      <h2>Slutsatser</h2>
-      <p>Uppgiften gav en god förståelse för hur REST API:er fungerar och hur man kan kommunicera mellan en frontend och backend via Fetch API. Det var lärorikt att se hur data flödar från databasen till användargränssnittet.</p>
+      <p>
+        Data skickas och hämtas via Fetch API och lagras i en NoSQL-databas (MongoDB).
+      </p>
+
+      <h2>Tekniker</h2>
+      <p>
+        Backend: Node.js, Express, Mongoose<br>
+        Databas: MongoDB (hostad via Railway)<br>
+        Frontend: HTML, CSS och JavaScript
+      </p>
+
+      <h2>Funktionalitet</h2>
+      <p>
+        Användaren kan se alla arbetserfarenheter, lägga till nya poster via ett formulär samt ta bort befintliga poster.
+        All data valideras både i frontend och backend för att säkerställa att korrekt information skickas och sparas.
+      </p>
+
+      <h2>Slutsats</h2>
+      <p>
+        Projektet gav en tydlig förståelse för hur en modern webbapplikation byggs upp med separerad frontend och backend.
+        En särskilt lärorik del var att koppla ihop MongoDB med ett REST API och förstå hur data flödar mellan klient och server.
+      </p>
     </div>
   </main>
 

@@ -1,0 +1,127 @@
+// API URL till backend (Railway)
+const API_URL = "https://backend-laboration3-uppgift1-production.up.railway.app/api/workexperience";
+
+// Om containern på startsidan finns så körs getworkExperience funktionen
+if (document.querySelector(".container")) {
+  getWorkExperience();
+}
+
+// Om formuläret finns på add sidan så körs handleForm funktionen
+if (document.querySelector("#cvForm")) {
+  handleForm();
+}
+
+// GET - hämtar alla arbetserfarenheter
+async function getWorkExperience() {
+  try {
+    const res = await fetch(API_URL);
+    const data = await res.json();
+
+    const container = document.querySelector(".container");
+    container.innerHTML = "";
+
+    // Loopar igenom datan och skapar ett li-element för varje post
+    data.forEach(item => {
+      const li = document.createElement("li");
+
+      li.innerHTML = `
+        <h3>${item.companyName}</h3>
+        <p class="role">${item.jobTitle}</p>
+        <p class="date">${formatDate(item.startDate)} - ${item.endDate ? formatDate(item.endDate) : "Nuvarande"}</p>
+        <p class="desc">${item.description}</p>
+        <button data-id="${item._id}">Ta bort</button>
+      `;
+
+        // Lägger till event listener för ta bort-knappen
+      li.querySelector("button").addEventListener("click", () => {
+        deleteItem(item._id);
+      });
+
+      container.appendChild(li);
+    });
+
+  } catch (err) {
+    console.error("Fel vid hämtning:", err);
+  }
+}
+
+// Formaterar datum till svenskt format
+function formatDate(dateString) {
+  if (!dateString) return "";
+  return new Date(dateString).toLocaleDateString("sv-SE");
+}
+
+// POST - lägger till ny arbetserfarenhet
+function handleForm() {
+  const form = document.querySelector("#cvForm");
+  const errorMsg = document.querySelector("#errorMsg");
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+
+    // Skapar objekt från formulärdata
+    const newItem = {
+      companyName: formData.get("companyname"),
+      jobTitle: formData.get("jobtitle"),
+      location: formData.get("location"),
+      startDate: formData.get("startdate"),
+      endDate: formData.get("enddate") || null,
+      description: formData.get("description")
+    };
+
+    // Validering
+    if (
+      !newItem.companyName ||
+      !newItem.jobTitle ||
+      !newItem.location ||
+      !newItem.startDate ||
+      !newItem.description
+    ) {
+      errorMsg.textContent = "Fyll i alla obligatoriska fält!";
+      return;
+    }
+
+    errorMsg.textContent = "";
+
+    try {
+      await fetch(API_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(newItem)
+      });
+
+      form.reset();
+      window.location.href = "index.html";
+
+    } catch (err) {
+      console.error("Fel vid post:", err);
+    }
+  });
+}
+
+// DELETE - tar bort post
+async function deleteItem(id) {
+  try {
+    await fetch(`${API_URL}/${id}`, {
+      method: "DELETE"
+    });
+
+    getWorkExperience();
+
+  } catch (err) {
+    console.error("Fel vid delete:", err);
+  }
+}
+
+// markerar aktiv meny
+const links = document.querySelectorAll(".menu a");
+
+links.forEach(link => {
+  if (link.href === window.location.href) {
+    link.classList.add("active");
+  }
+});
