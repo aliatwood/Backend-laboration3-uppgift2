@@ -32,4 +32,4 @@ Deployment: Railway + GitHub Pages
 
 ## Publicerad webbplats
 Webbplatsen publiceras automatiskt via **GitHub Pages**.
-[Länk till den publicerade webbplatsen](https://aliatwood.github.io/Backend-laboration2-uppgift2/)
+[Länk till den publicerade webbplatsen](https://aliatwood.github.io/Backend-laboration3-uppgift2/)
