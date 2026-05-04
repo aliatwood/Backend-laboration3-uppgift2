@@ -23,6 +23,8 @@ All data valideras i JavaScript innan den skickas till API:et för att säkerst�
 Webbplatsen kommunicerar med detta API:
 https://backend-laboration3-uppgift1-production.up.railway.app/api/workexperience
 
+Installation och databas
+
 ## Tekniker
 
 HTML, CSS och JavaScript
@@ -32,4 +34,4 @@ Deployment: Railway + GitHub Pages
 
 ## Publicerad webbplats
 Webbplatsen publiceras automatiskt via **GitHub Pages**.
-[Länk till den publicerade webbplatsen](https://aliatwood.github.io/Backend-laboration2-uppgift2/)
+[Länk till den publicerade webbplatsen](https://aliatwood.github.io/Backend-laboration3-uppgift2/)
